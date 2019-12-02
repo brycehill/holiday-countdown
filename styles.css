@@ -1,0 +1,78 @@
+body {
+  font-size: 20px;
+  font-family: helvetica;
+  background: #f7fafc;
+  color: #4a5568;
+  font-family: georgia, serif;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 36px;
+  width: 100vw;
+}
+
+.days {
+  letter-spacing: 1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 9px 0;
+}
+
+.daysNumber {
+  font-size: 8em;
+  margin-bottom: 18px;
+}
+
+.daysText {
+  font-size: 2em;
+  margin-bottom: 18px;
+}
+
+.timer {
+  margin: 9px 0;
+  font-size: 1.8em;
+  font-family: courier, monospace;
+}
+
+.link {
+  color: #2b6cb0;
+  padding: 18px 0;
+  margin: 0 9px;
+  cursor: pointer;
+  transition: color 200ms ease-in-out;
+  background: transparent;
+  border: 0;
+  font-size: 1em;
+  font-family: georgia;
+}
+
+.link:hover,
+.link:focus {
+  outline: 0;
+  color: #3182ce;
+  border-bottom: 1px solid #3182ce;
+  transform: translateY(1px);
+}
+
+.nav {
+  max-width: 1024px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 9px;
+}
