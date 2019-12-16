@@ -39,25 +39,35 @@ days.forEach(([date, text]) => {
 function setTime() {
   let [targetDate, text] = data
   const now = new Date()
-  let diff = targetDate.getTime() - now.getTime()
-  if (diff < 0) {
-    targetDate.setFullYear(thisYear + 1)
-    diff = targetDate.getTime() - Date.now()
-  }
-  const daysLeft = Math.ceil(diff / 1000 / 60 / 60 / 24)
-  const hoursLeft = targetDate.getHours() - now.getHours()
-  const minutesLeft = targetDate.getMinutes() - now.getMinutes()
-  const secondsLeft = targetDate.getSeconds() - now.getSeconds()
-  const msLeft = targetDate.getMilliseconds() - now.getMilliseconds()
-  const ms = parseInt((msLeft < 0 ? 999 + msLeft : msLeft) / 10, 10)
-  const hours = hoursLeft < 0 ? 23 + hoursLeft : hoursLeft
-  const minutes = minutesLeft < 0 ? 59 + minutesLeft : minutesLeft
-  const seconds = secondsLeft < 0 ? 59 + secondsLeft : secondsLeft
-  const countdown = `${hours}h ${pad(minutes)}m ${pad(seconds)}.${pad(ms)}s`
+  const isToday =
+    now.getDate() == targetDate.getDate() &&
+    now.getMonth() == targetDate.getMonth()
 
-  daysNumberEl.innerText = `${daysLeft} days`
-  daysTextEl.innerText = `until ${text}`
-  timerEl.innerText = countdown
+  if (isToday) {
+    daysNumberEl.innerText = `It's today!`
+    daysTextEl.innerText = ''
+    timerEl.innerText = ''
+  } else {
+    let diff = targetDate.getTime() - now.getTime()
+    if (diff < 0) {
+      targetDate.setFullYear(thisYear + 1)
+      diff = targetDate.getTime() - Date.now()
+    }
+    const daysLeft = Math.ceil(diff / 1000 / 60 / 60 / 24)
+    const hoursLeft = targetDate.getHours() - now.getHours()
+    const minutesLeft = targetDate.getMinutes() - now.getMinutes()
+    const secondsLeft = targetDate.getSeconds() - now.getSeconds()
+    const msLeft = targetDate.getMilliseconds() - now.getMilliseconds()
+    const ms = parseInt((msLeft < 0 ? 999 + msLeft : msLeft) / 10, 10)
+    const hours = hoursLeft < 0 ? 23 + hoursLeft : hoursLeft
+    const minutes = minutesLeft < 0 ? 59 + minutesLeft : minutesLeft
+    const seconds = secondsLeft < 0 ? 59 + secondsLeft : secondsLeft
+    const countdown = `${hours}h ${pad(minutes)}m ${pad(seconds)}.${pad(ms)}s`
+
+    daysNumberEl.innerText = `${daysLeft} days`
+    daysTextEl.innerText = `until ${text}`
+    timerEl.innerText = countdown
+  }
 }
 
 function pad(num) {
